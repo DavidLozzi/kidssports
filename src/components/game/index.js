@@ -1,15 +1,23 @@
+import React from 'react';
+import soccerIcon from '../../assets/soccer.png';
+import volleyballIcon from '../../assets/volleyball.png';
+import unknownIcon from '../../assets/unknown.png';
+import calendarIcon from '../../assets/calendar.png';
 import * as Styled from './index.styles';
 const ics = require('ics');
 
 const Game = ({ sport, kid, date, location, even }) => {
-  const theDate = new Date(date);
-  const saveCalendar = () => {
-    console.log(theDate.getFullYear(), theDate.getMonth() + 1, theDate.getHours(), theDate.getMinutes());
+  const [calLink, setCalLink] = React.useState('')
+  const [sportIcon, setSportIcon] = React.useState()
+  const theDate = React.useMemo(() => new Date(date), [date])
+  const isiPhoneChrome = window.navigator.userAgent.indexOf('CriOS') > -1
+
+  React.useEffect(() => {
     const event = {
       start: [theDate.getFullYear(), theDate.getMonth()+1, theDate.getDate(), theDate.getHours(), theDate.getMinutes()],
       duration: { hours: 1, minutes: 30 },
       title: `${kid}'s ${sport}`,
-      description: 'Cctual time may vary and could be cancelled without notification.\n\nText if needed: David 978.305.5040, Heather: 508.982.4777',
+      description: 'Actual time may vary and could be cancelled without notification.\n\nText if needed: David 978.305.5040, Heather: 508.982.4777',
       location: location
     }
 
@@ -18,18 +26,31 @@ const Game = ({ sport, kid, date, location, even }) => {
         console.error(err)
         return
       }
-      console.log(val);
       const contentToDownload = `data:text/calendar;charset=utf-8,${encodeURIComponent(val)}`;
-      window.open(contentToDownload, 'event.ics');
+      setCalLink(contentToDownload);
     })
-  }
+    switch (sport) {
+      case 'Soccer':
+        setSportIcon(soccerIcon)
+        break
+      case 'Volleyball':
+        setSportIcon(volleyballIcon)
+        break
+      default:
+        setSportIcon(unknownIcon)
+        break
+    }
+  }, [sport, kid, location, theDate])
+  
   return <Styled.Wrapper even={even}>
-    <Styled.Icon sport={sport}>{kid.substring(0,1)}</Styled.Icon>
+    <Styled.Icon kid={kid}>
+      <Styled.Image src={sportIcon} />
+    </Styled.Icon>
+    {calLink && !isiPhoneChrome && <Styled.Save href={calLink} download={kid}><Styled.Calendar src={calendarIcon} /></Styled.Save>}
     <Styled.TextWrapper>
-      <Styled.Date>{theDate.toDateString()} at {theDate.toLocaleTimeString()}</Styled.Date>
+      <Styled.Date>{theDate.toDateString()} at {theDate.toLocaleTimeString().replace(':00 ',' ')}</Styled.Date>
       <Styled.Desc>{kid} is playing {sport} at {location}</Styled.Desc>
     </Styled.TextWrapper>
-    <Styled.Save onClick={saveCalendar}>Save to Cal</Styled.Save>
   </Styled.Wrapper>
 }
 

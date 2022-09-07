@@ -6,10 +6,10 @@ const theme = {
     white: '#FFFFFF',
     grey: '#eeeeee'
   },
-  sports: {
-    volleyball: '#29378E',
-    soccer: '#FFBA57',
-    dance: '#983A90'
+  kids: {
+    annabelle: '#BE0AFF',
+    calvin: '#FF8000',
+    penny: '#F20089'
   },
   fonts: {
     title: 'Arial',

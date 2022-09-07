@@ -33,6 +33,10 @@ export const Intro = styled.div`
   font-size: 24px;
 `
 
+export const Note = styled(Intro)`
+  font-size: 18px;
+`
+
 export const Input = styled.input`
   font-size: 24px;
   border: 1px solid ${({ theme }) => theme.colors.blue};

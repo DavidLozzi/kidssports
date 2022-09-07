@@ -13,24 +13,33 @@ export const Wrapper = styled(({ even, ...rest}) => <div {...rest} />)`
 
   ${({ theme, even }) => even && css`
     background-color: ${ theme.colors.grey };
+    border-radius: 15px;
   `}
 `
 
-export const Icon = styled(({ sport, ...rest }) => <div {...rest} />)`
+export const Icon = styled(({ kid, ...rest }) => <div {...rest} />)`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: ${({ theme, sport }) => theme.sports[sport.toLowerCase()]};
+  background-color: ${({ theme, kid }) => theme.kids[kid.toLowerCase()]};
   color: ${({ theme }) => theme.colors.white};
   display:flex;
   align-items: center;
   justify-content: center;
   font-size: 35px;
   font-family: ${({ theme }) => theme.fonts.title};
+  order: 1;
 `
 
+export const Image = styled.img`
+  width: 40px;
+`
+export const Calendar = styled(Image)`
+  width: 20px;
+`
 export const TextWrapper = styled.div`
   width: 70%;
+  order: 3;
   @media (max-width: 500px) {
     width: 100%;
   }
@@ -56,12 +65,17 @@ export const Desc = styled.div`
   }
 `
 
-export const Save = styled(Desc)`
+export const Save = styled.a`
   font-size: 20px;
-  cursor:pointer;
+  color:  ${({ theme }) => theme.colors.blue};
+  font-family: ${({ theme }) => theme.fonts.text};
+  order: 4;
 
   @media (max-width: 500px) {
-    font-size: 18px;
-    text-align: right;
+    order: 2;
+    display: flex;
+    align-self: flex-end;
+    margin-top: -40px;
+    margin-bottom: 20px;
   }
 `

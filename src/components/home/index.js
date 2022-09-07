@@ -8,6 +8,7 @@ const Home = () => {
   const [loggedIn, setLoggedIn] = React.useState(localStorage.getItem('loggedIn'))
   const [password, setPassword] = React.useState(localStorage.getItem('salty'))
   const [invalid, setInvalid] = React.useState()
+  const isiPhoneChrome = window.navigator.userAgent.indexOf('CriOS') > -1
 
   const logMeIn = () => {
     const doObfs = obfs(password)
@@ -42,6 +43,7 @@ const Home = () => {
         <Styled.Intro>
           Below is a list of the Lozzi family sports schedule! We can't wait to see you there!
         </Styled.Intro>
+        {isiPhoneChrome && <Styled.Note>Use Safari instead of Chrome to download into your calendar!</Styled.Note>}
         <List salt={password} />
       </>
       }
