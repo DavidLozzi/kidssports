@@ -1,7 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import theme from './theme';
+import Home from './components/home';
 
 function App() {
   const GlobalStyle = createGlobalStyle`
@@ -15,7 +15,7 @@ function App() {
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-
+        <Home />
       </ThemeProvider>
     </>
   );

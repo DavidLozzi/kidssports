@@ -17,5 +17,11 @@ const sched = [
     date: '9/9/22 6:00 PM',
     location: 'Wilmington High School'
   },
+  {
+    sport: 'Volleyball',
+    kid: 'Annabelle',
+    date: '9/6/22 6:30 PM',
+    location: 'Wilmington High School'
+  },
 ]
 export default sched
