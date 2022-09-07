@@ -23,8 +23,6 @@ export const Logout = styled.div`
 `
 export const Image = styled.img`
   width: 200px;
-  position: sticky;
-  top: 20px;
   margin-bottom: 20px;
 `
 
