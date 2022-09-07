@@ -2,7 +2,7 @@ import React from 'react';
 import List from '../list';
 import logo from '../../assets/logo192.png';
 import * as Styled from './index.styles'
-import { obfs, unobfs } from '../../utils';
+import { obfs } from '../../utils';
 
 const Home = () => {
   const [loggedIn, setLoggedIn] = React.useState(localStorage.getItem('loggedIn'))
@@ -31,7 +31,7 @@ const Home = () => {
       </>
       }
       {!loggedIn && <>
-        <Styled.Intro>Please log in to view the schedule. If you do not know the password, contact David or Heather.}</Styled.Intro>
+        <Styled.Intro>Please log in to view the schedule. If you do not know the password, contact David or Heather.</Styled.Intro>
         <Styled.Input type="password" onChange={(e) => setPassword(e.target.value)} />
         <Styled.Button onClick={logMeIn}>Log In</Styled.Button>
         {invalid && <Styled.Invalid>{invalid}</Styled.Invalid>}
