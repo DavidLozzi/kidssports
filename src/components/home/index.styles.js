@@ -16,7 +16,11 @@ export const Container = styled.div`
     padding: 0px 10px;
   }
 `
+export const Logout = styled.div`
+  align-self: flex-end;
+  padding: 5px;
 
+`
 export const Image = styled.img`
   width: 200px;
   position: sticky;
@@ -34,7 +38,7 @@ export const Intro = styled.div`
 export const Input = styled.input`
   font-size: 24px;
   border: 1px solid ${({ theme }) => theme.colors.blue};
-  padding: 5px;
+  padding: 10px;
   border-radius: 7px;
   margin-bottom: 20px;
   font-family: ${({ theme }) => theme.fonts.title};
